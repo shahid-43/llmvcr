@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "llmvcr"
-version = "0.1.0"
+version = "0.1.1"
 description = "Record and replay LLM API responses for fast, free, deterministic tests"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -36,8 +36,6 @@ groq = ["groq>=0.9"]
 all = ["openai>=1.0", "anthropic>=0.20", "google-genai>=1.0", "ollama>=0.2", "groq>=0.9"]
 dev = [
     "pytest>=7.0",
-    "openai>=1.0",
-    "anthropic>=0.20",
     "python-dotenv>=1.0",
 ]
 

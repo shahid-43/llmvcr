@@ -298,6 +298,15 @@ The root cause: VCR.py intercepts raw HTTP bytes. llmvcr intercepts at the SDK l
 
 ---
 
+## Limitations
+
+- Changing prompts, message structure, provider, or model may require re-recording a cassette.
+- Request matching is based on the serialized request content used by the provider integration.
+- Provider SDK changes may require updates in future `llmvcr` releases.
+- Local-provider workflows like Ollama require the model/runtime to be available when recording.
+
+---
+
 ## Running the Tests
 
 ### Install dev dependencies
@@ -432,6 +441,19 @@ When adding a new provider, follow the pattern in `src/llmvcr/providers/openai_p
 
 ---
 
+
 ## License
 
-MIT — see [LICENSE](LICENSE).
+This project uses the **MIT [LICENSE](LICENSE)**.
+
+That means other developers can use, modify, publish, and even use your package commercially, as long as they keep the license notice and copyright text.
+
+
+## Contributing
+
+1. Fork the repo
+2. Create a branch
+3. Add tests for changes
+4. Run `pytest -v`
+5. Open a pull request
+

@@ -8,8 +8,11 @@ Usage:
 """
 
 import argparse
-import sys
 import os
+import sys
+
+
+SUPPORTED_PROVIDERS = ["openai", "anthropic", "gemini", "ollama", "groq"]
 
 
 def cmd_info(args):
@@ -60,22 +63,29 @@ def cmd_info(args):
 
 
 def cmd_record(args):
-    """Set LLMVCR_RECORD env var and run the target script."""
+    """Set record mode env vars and run the target script."""
     os.environ["LLMVCR_MODE"] = "record"
     os.environ["LLMVCR_CASSETTE"] = args.output
+    os.environ["LLMVCR_PROVIDER"] = args.provider
     _run_script(args.script)
 
 
 def cmd_playback(args):
-    """Set LLMVCR_PLAYBACK env var and run the target script."""
+    """Set playback mode env vars and run the target script."""
     os.environ["LLMVCR_MODE"] = "playback"
     os.environ["LLMVCR_CASSETTE"] = args.cassette
+    os.environ["LLMVCR_PROVIDER"] = args.provider
     _run_script(args.script)
 
 
 def _run_script(script_args):
     """Execute a script in a subprocess with the current environment."""
     import subprocess
+
+    if not script_args:
+        print("Error: no script command provided.", file=sys.stderr)
+        sys.exit(2)
+
     result = subprocess.run(script_args, env=os.environ)
     sys.exit(result.returncode)
 
@@ -88,22 +98,29 @@ def main():
     parser.add_argument("--version", action="version", version="llmvcr 0.1.0")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    # llmvcr info <cassette>
     info_parser = subparsers.add_parser("info", help="Inspect a cassette file")
     info_parser.add_argument("cassette", help="Path to cassette YAML file")
     info_parser.set_defaults(func=cmd_info)
 
-    # llmvcr record --output <path> <script...>
     record_parser = subparsers.add_parser("record", help="Record API calls to a cassette")
     record_parser.add_argument("--output", "-o", required=True, help="Path to save the cassette")
-    record_parser.add_argument("--provider", default="openai", choices=["openai", "anthropic"])
+    record_parser.add_argument(
+        "--provider",
+        default="openai",
+        choices=SUPPORTED_PROVIDERS,
+        help="LLM provider to use",
+    )
     record_parser.add_argument("script", nargs=argparse.REMAINDER, help="Script to run")
     record_parser.set_defaults(func=cmd_record)
 
-    # llmvcr playback --cassette <path> <script...>
     playback_parser = subparsers.add_parser("playback", help="Replay API calls from a cassette")
     playback_parser.add_argument("--cassette", "-c", required=True, help="Path to cassette to replay")
-    playback_parser.add_argument("--provider", default="openai", choices=["openai", "anthropic"])
+    playback_parser.add_argument(
+        "--provider",
+        default="openai",
+        choices=SUPPORTED_PROVIDERS,
+        help="LLM provider to use",
+    )
     playback_parser.add_argument("script", nargs=argparse.REMAINDER, help="Script to run")
     playback_parser.set_defaults(func=cmd_playback)
 
