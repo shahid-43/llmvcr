@@ -1,0 +1,46 @@
+llmvcr_version: '0.1'
+provider: gemini
+recorded_at: '2025-03-03T10:00:00Z'
+interactions:
+  - request:
+      model: gemini-2.0-flash
+      messages:
+        - role: user
+          content: Summarize artificial intelligence in one sentence.
+    response:
+      text: Artificial intelligence is the development of computer systems capable
+        of performing tasks that typically require human intelligence.
+      candidates:
+        - content:
+            parts:
+              - text: Artificial intelligence is the development of computer systems
+                  capable of performing tasks that typically require human intelligence.
+            role: model
+          finish_reason: STOP
+      usage_metadata:
+        prompt_token_count: 10
+        candidates_token_count: 22
+        total_token_count: 32
+
+  - request:
+      model: gemini-2.0-flash
+      messages:
+        - role: system
+          content: You are a concise assistant.
+        - role: user
+          content: What is Python?
+    response:
+      text: Python is a versatile, high-level programming language valued for its
+        readability and broad ecosystem across data science, web development, and automation.
+      candidates:
+        - content:
+            parts:
+              - text: Python is a versatile, high-level programming language valued
+                  for its readability and broad ecosystem across data science, web
+                  development, and automation.
+            role: model
+          finish_reason: STOP
+      usage_metadata:
+        prompt_token_count: 14
+        candidates_token_count: 28
+        total_token_count: 42

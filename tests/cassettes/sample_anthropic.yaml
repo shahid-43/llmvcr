@@ -1,0 +1,43 @@
+llmvcr_version: '0.1'
+provider: anthropic
+recorded_at: '2025-03-03T10:00:00Z'
+interactions:
+  - request:
+      model: claude-3-5-sonnet-20241022
+      messages:
+        - role: system
+          content: You are a helpful assistant.
+        - role: user
+          content: Summarize artificial intelligence in one sentence.
+    response:
+      id: msg-sample001
+      type: message
+      role: assistant
+      model: claude-3-5-sonnet-20241022
+      content:
+        - type: text
+          text: Artificial intelligence enables machines to perform tasks that typically
+            require human intelligence, such as understanding language and recognizing patterns.
+      stop_reason: end_turn
+      usage:
+        input_tokens: 20
+        output_tokens: 25
+
+  - request:
+      model: claude-3-5-sonnet-20241022
+      messages:
+        - role: user
+          content: What is Python?
+    response:
+      id: msg-sample002
+      type: message
+      role: assistant
+      model: claude-3-5-sonnet-20241022
+      content:
+        - type: text
+          text: Python is a versatile, beginner-friendly programming language widely
+            used in web development, data science, automation, and artificial intelligence.
+      stop_reason: end_turn
+      usage:
+        input_tokens: 12
+        output_tokens: 26

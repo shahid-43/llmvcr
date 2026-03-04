@@ -1,0 +1,30 @@
+# llmvcr — core dependencies (always required)
+pyyaml>=6.0
+wrapt>=1.14
+
+# ── LLM Provider SDKs ─────────────────────────────────────────────────────────
+# Install only the ones you need, or run: pip install llmvcr[all]
+
+# OpenAI (GPT-4, GPT-3.5, etc.)
+# pip install llmvcr[openai]
+openai>=1.0
+
+# Anthropic (Claude)
+# pip install llmvcr[anthropic]
+anthropic>=0.20
+
+# Google Gemini
+# pip install llmvcr[gemini]
+google-genai>=1.0
+
+# Llama via Ollama (local inference — also requires https://ollama.com running)
+# pip install llmvcr[ollama]
+ollama>=0.2
+
+# Llama via Groq (cloud inference)
+# pip install llmvcr[groq]
+groq>=0.9
+
+# ── Development & Testing ─────────────────────────────────────────────────────
+pytest>=7.0
+python-dotenv>=1.0

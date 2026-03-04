@@ -1,0 +1,36 @@
+llmvcr_version: '0.1'
+provider: ollama
+recorded_at: '2025-03-03T10:00:00Z'
+interactions:
+  - request:
+      model: llama3.1
+      messages:
+        - role: user
+          content: Summarize artificial intelligence in one sentence.
+    response:
+      model: llama3.1
+      message:
+        role: assistant
+        content: Artificial intelligence refers to the simulation of human intelligence
+          in machines programmed to think, learn, and solve problems autonomously.
+      done: true
+      prompt_eval_count: 14
+      eval_count: 24
+
+  - request:
+      model: llama3.1
+      messages:
+        - role: system
+          content: You are a helpful assistant.
+        - role: user
+          content: What is Python?
+    response:
+      model: llama3.1
+      message:
+        role: assistant
+        content: Python is an interpreted, high-level programming language known for
+          its simple syntax, making it popular for web development, scripting, and
+          machine learning.
+      done: true
+      prompt_eval_count: 20
+      eval_count: 30

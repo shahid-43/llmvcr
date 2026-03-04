@@ -1,0 +1,67 @@
+llmvcr_version: '0.1'
+provider: openai
+recorded_at: '2025-03-03T10:00:00Z'
+interactions:
+  - request:
+      model: gpt-4
+      messages:
+        - role: user
+          content: Summarize artificial intelligence in one sentence.
+    response:
+      id: chatcmpl-sample001
+      object: chat.completion
+      model: gpt-4
+      choices:
+        - index: 0
+          message:
+            role: assistant
+            content: Artificial intelligence is the simulation of human-like reasoning,
+              learning, and decision-making by computer systems.
+          finish_reason: stop
+      usage:
+        prompt_tokens: 14
+        completion_tokens: 22
+        total_tokens: 36
+
+  - request:
+      model: gpt-4
+      messages:
+        - role: user
+          content: What is Python?
+    response:
+      id: chatcmpl-sample002
+      object: chat.completion
+      model: gpt-4
+      choices:
+        - index: 0
+          message:
+            role: assistant
+            content: Python is a high-level, interpreted programming language known for
+              its clean syntax and versatility across web development, data science, and automation.
+          finish_reason: stop
+      usage:
+        prompt_tokens: 10
+        completion_tokens: 28
+        total_tokens: 38
+
+  - request:
+      model: gpt-3.5-turbo
+      messages:
+        - role: system
+          content: You are a helpful assistant.
+        - role: user
+          content: Say hello!
+    response:
+      id: chatcmpl-sample003
+      object: chat.completion
+      model: gpt-3.5-turbo
+      choices:
+        - index: 0
+          message:
+            role: assistant
+            content: Hello! How can I help you today?
+          finish_reason: stop
+      usage:
+        prompt_tokens: 18
+        completion_tokens: 9
+        total_tokens: 27

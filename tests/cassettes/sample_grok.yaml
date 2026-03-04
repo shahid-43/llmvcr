@@ -1,0 +1,46 @@
+llmvcr_version: '0.1'
+provider: groq
+recorded_at: '2025-03-03T10:00:00Z'
+interactions:
+  - request:
+      model: llama-3.3-70b-versatile
+      messages:
+        - role: user
+          content: Summarize artificial intelligence in one sentence.
+    response:
+      id: chatcmpl-groq-sample001
+      object: chat.completion
+      model: llama-3.3-70b-versatile
+      choices:
+        - index: 0
+          message:
+            role: assistant
+            content: Artificial intelligence is the field of computer science focused
+              on building systems that can perform tasks requiring human-like reasoning,
+              learning, and perception.
+          finish_reason: stop
+      usage:
+        prompt_tokens: 14
+        completion_tokens: 28
+        total_tokens: 42
+
+  - request:
+      model: llama-3.1-8b-instant
+      messages:
+        - role: user
+          content: What is Python?
+    response:
+      id: chatcmpl-groq-sample002
+      object: chat.completion
+      model: llama-3.1-8b-instant
+      choices:
+        - index: 0
+          message:
+            role: assistant
+            content: Python is a high-level, dynamically typed programming language
+              celebrated for its clean syntax and extensive library ecosystem.
+          finish_reason: stop
+      usage:
+        prompt_tokens: 10
+        completion_tokens: 22
+        total_tokens: 32
