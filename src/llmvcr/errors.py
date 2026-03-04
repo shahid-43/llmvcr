@@ -30,13 +30,14 @@ class NoMatchFoundError(LLMVCRError):
         )
 
 
-class ProviderNotSupportedError(LLMVCRError):
-    """Raised when llmvcr cannot identify the LLM provider being patched."""
+SUPPORTED_PROVIDERS = ("openai", "anthropic", "gemini", "ollama", "groq")
 
+
+class ProviderNotSupportedError(Exception):
     def __init__(self, provider: str):
-        self.provider = provider
-        super().__init__(
+        message = (
             f"Provider '{provider}' is not supported yet.\n"
-            f"Supported providers: openai, anthropic\n"
-            f"Open an issue at https://github.com/your-username/llmvcr/issues"
+            f"Supported providers: {', '.join(SUPPORTED_PROVIDERS)}\n"
+            "Open an issue at https://github.com/shahid-43/llmvcr/issues"
         )
+        super().__init__(message)
