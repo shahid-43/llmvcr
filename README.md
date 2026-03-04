@@ -304,7 +304,7 @@ The root cause: VCR.py intercepts raw HTTP bytes. llmvcr intercepts at the SDK l
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/llmvcr
+git clone https://github.com/shahid-43/llmvcr
 cd llmvcr
 
 # Install in editable mode with dev dependencies
