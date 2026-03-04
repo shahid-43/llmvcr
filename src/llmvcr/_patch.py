@@ -22,6 +22,12 @@ def apply_patch(provider: str, record_callback, playback_callback):
         from .providers.openai_provider import make_patch
     elif provider == "anthropic":
         from .providers.anthropic_provider import make_patch
+    elif provider == "gemini":
+        from .providers.gemini_provider import make_patch
+    elif provider == "ollama":
+        from .providers.ollama_provider import make_patch
+    elif provider == "groq":
+        from .providers.groq_provider import make_patch
     else:
         raise ProviderNotSupportedError(provider)
 
